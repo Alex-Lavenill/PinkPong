@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Ball/Ball.gd" type="Script" id=2]
+[ext_resource path="res://src/Enemy/Enemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 150 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 88, 300 )
+
+[node name="Main" type="Node"]
+
+[node name="Ball" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 300 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+color = Color( 0.894118, 0.956863, 0.341176, 1 )
+
+[node name="Coll" type="CollisionShape2D" parent="Ball"]
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 50, 300 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+
+[node name="TopBot" type="RigidBody2D" parent="."]
+position = Vector2( 512, 300 )
+mode = 3
+gravity_scale = 0.0
+contact_monitor = true
+
+[node name="Top" type="CollisionShape2D" parent="TopBot"]
+position = Vector2( 0, -450 )
+shape = SubResource( 2 )
+
+[node name="Bottom" type="CollisionShape2D" parent="TopBot"]
+position = Vector2( 0, 450 )
+shape = SubResource( 2 )
+
+[node name="LeftRight" type="RigidBody2D" parent="."]
+position = Vector2( 512, 300 )
+mode = 3
+gravity_scale = 0.0
+
+[node name="Left" type="CollisionShape2D" parent="LeftRight"]
+position = Vector2( -600, 0 )
+shape = SubResource( 3 )
+
+[node name="Right" type="CollisionShape2D" parent="LeftRight"]
+position = Vector2( 600, 0 )
+shape = SubResource( 3 )
