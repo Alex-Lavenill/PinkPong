@@ -1,0 +1,179 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/ModeManager/ModeManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ZCOOLQing-32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/audio/ending.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/Settings/Settings.tscn" type="PackedScene" id=5]
+
+[sub_resource type="LargeTexture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = SubResource( 1 )
+modulate_color = Color( 0.482353, 0.482353, 0.482353, 0.231373 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="ModeManager" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = 1.0
+margin_right = -4.0
+margin_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -1.0
+margin_right = 4.0
+margin_bottom = -1.0
+color = Color( 0, 0, 0, 0.47451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InitialMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Label" parent="InitialMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -16.5
+margin_right = 20.0
+margin_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Button" parent="InitialMenu/start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.5
+margin_top = -39.0
+margin_right = 192.5
+margin_bottom = 39.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -447.0
+margin_top = -235.0
+margin_right = -334.0
+margin_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+text = "<   Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.5
+margin_top = 129.5
+margin_right = 46.5
+margin_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 105, 43 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+shortcut = SubResource( 5 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="winner" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -193.5
+margin_top = -32.5
+margin_right = 193.5
+margin_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 6 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ending" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Settings" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Setting" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5
+margin_top = 73.5
+margin_right = 56.5
+margin_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="InitialMenu/start/start" to="." method="pause"]
+[connection signal="pressed" from="InitialMenu/start/start" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="Back" to="." method="_Back_pressed"]
+[connection signal="pressed" from="restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="Setting" to="." method="_Settings_pressed"]

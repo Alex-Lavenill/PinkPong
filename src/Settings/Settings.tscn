@@ -1,0 +1,233 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/Settings/Volume.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ZCOOLQing-32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/Settings/menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/ZCOOLQing-16.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.8, 0.2, 0.8, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.262745, 0.552941, 0.72549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 0.219608 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+draw_center = false
+border_color = Color( 0.572549, 0.976471, 0.0392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.996078, 0.435294, 0.921569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 0.176471 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.6, 0.6, 0.6, 0.113725 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+draw_center = false
+
+[node name="Settings" type="Node2D"]
+position = Vector2( 0, 1 )
+
+[node name="menu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_right = 1023.0
+margin_bottom = 600.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="HScrollBar" parent="menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -4.0
+margin_right = -42.0
+margin_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 81, 5 )
+custom_styles/grabber_highlight = SubResource( 1 )
+custom_styles/grabber = SubResource( 2 )
+custom_styles/scroll = SubResource( 3 )
+custom_styles/grabber_pressed = SubResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+normal = Color( 1, 0.498039, 1, 1 )
+
+[node name="music_volume" type="Label" parent="menu"]
+margin_left = 200.0
+margin_top = 216.0
+margin_right = 359.0
+margin_bottom = 249.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music volume:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="easy" type="Button" parent="menu"]
+margin_left = 714.0
+margin_top = 228.0
+margin_right = 801.0
+margin_bottom = 275.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+text = "Easy"
+
+[node name="normal" type="Button" parent="menu"]
+margin_left = 715.0
+margin_top = 284.0
+margin_right = 803.0
+margin_bottom = 330.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
+text = "Normal"
+
+[node name="hard" type="Button" parent="menu"]
+margin_left = 715.0
+margin_top = 340.0
+margin_right = 803.0
+margin_bottom = 387.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
+text = "Hard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = 160.0
+margin_right = 22.0
+margin_bottom = 199.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = ExtResource( 2 )
+text = "OK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OK" type="Button" parent="menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -447.0
+margin_top = -235.0
+margin_right = -356.0
+margin_bottom = -196.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = ExtResource( 2 )
+text = "<   Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Default" type="Button" parent="menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 202.0
+margin_top = 160.0
+margin_right = 303.0
+margin_bottom = 199.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = ExtResource( 2 )
+text = "Default"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="warning" type="Label" parent="menu"]
+margin_left = 718.0
+margin_top = 395.0
+margin_right = 873.0
+margin_bottom = 432.0
+custom_fonts/font = ExtResource( 4 )
+text = "*This will be changed when the game restart"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="menu/Volume" to="menu/Volume" method="_Volume_value_changed"]

@@ -1,4 +1,7 @@
-extends "res://src/Classes/Pad.gd"
+extends "res://src/Pad/Pad.gd"
+
+var touchedUp := false
+var touchedDown := false
 
 func _physics_process(delta: float) -> void:
 	playerVelocity()
@@ -6,15 +9,15 @@ func _physics_process(delta: float) -> void:
 # Captura os inputs, que determinam a direção do Pad;
 # Calcula a aceleração do Pad.
 func playerVelocity() -> void:
-	if Input.is_action_pressed("ui_up") and (position.y + offset.y) > 0:
+	if (Input.is_action_pressed("ui_up") or touchedUp) and (position.y + offset.y) > 0:
 		direction = Vector2.UP
-		velocity += speed * acceleration
-	elif Input.is_action_pressed("ui_down") and (position.y - offset.y) < 600:
+		velocity += speed[mode] * acceleration[mode]
+	elif (Input.is_action_pressed("ui_down") or touchedDown) and (position.y - offset.y) < 600:
 		direction = Vector2.DOWN
-		velocity += speed * acceleration
+		velocity += speed[mode] * acceleration[mode]
 	else: 
 		direction = Vector2.ZERO
-		velocity -= speed * acceleration/2
+		velocity -= speed[mode] * acceleration[mode]/2
 
 
 

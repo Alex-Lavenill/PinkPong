@@ -3,13 +3,16 @@ extends KinematicBody2D
 # Características da Ball, exportadas para o editor
 export var color := Color.aliceblue
 export var radius := 15.0
-export var speed = 200.0
-export var speed_scale := 1.2
 
+var speed := [200.0, 400.0, 600.0]
+var max_velocity := [800.0, 1100.0, 1500.0]
+var speed_scale := [1.1, 1.2, 1.3]
 var origin : Vector2
 var initial_direction: float
 var direction: Vector2
 var velocity : float
+var last_pad_collided : Node
+var mode := 2
 
 # Trata collisionshape;
 # Inicializa variáveis (origin e velocity);
@@ -18,7 +21,7 @@ func _ready() -> void:
 	$Coll.shape.radius = radius
 	
 	origin = position
-	velocity = speed
+	velocity = speed[mode]
 	
 	# 0 == esquerda; 1 == direita
 	randomize() # Para a ficar realmente aleatório
@@ -37,22 +40,38 @@ func _draw() -> void:
 # Colidir com Pad/parede (supeior/inferior): escalar velocidade e ricochetear.  
 func _physics_process(delta: float) -> void:
 	# movendo a Ball e detectando colisões (quando existem)
-	var collisor := move_and_collide(direction * velocity * delta)
+	velocity = clamp(velocity, speed[mode], max_velocity[mode])
+	var movement_ammount := direction * velocity * delta
 	
+	var collisor := move_and_collide(movement_ammount)
 	if collisor:
-		if collisor.collider.name.begins_with('Left'):
+		var collider := collisor.collider
+		if collider.name.begins_with('Left'):
+			get_parent().enemyPoint()
+		elif collider.name.begins_with('Right'):
 			get_parent().playerPoint()
-			restart_ball()
-		elif collisor.collider.name.begins_with('Right'):
-			get_parent().enemyPoin()
-			restart_ball()
 		else:
-			velocity *= speed_scale # escalando a velocidade sempre que colide
-			direction = direction.bounce(collisor.normal) # ricochete
+			if !collider == last_pad_collided:
+				if (collider.has_method('_draw')) and (position.x < 61 or position.x < 985):
+					if  collider.direction.y > 0:
+						direction += Vector2(0, .2)
+					elif collider.direction.y < 0:
+						direction += Vector2(0, -.2)
+					last_pad_collided = collider
+					direction.x = -direction.x
+					velocity *= speed_scale[mode] # escalando a velocidade sempre que colide
+					if collider.has_method('playerVelocity'):
+						get_parent().get_node("Cam/aud_player").playerAudio()
+					else:
+						get_parent().get_node("Cam/aud_enemy").enemyAudio()
+				else:
+					direction = direction.bounce(collisor.normal) # ricochete
+					get_parent().get_node("Cam/aud_center").wallAudio()
 
 # Reiniciando posição, e velocidade da Ball
 # Reinicia na direção daquele que fez o ponto
-func restart_ball() -> void:
+func restart_ball(initial_dir: Vector2) -> void:
 	position = origin
-	direction *= -1
-	velocity = speed
+	direction = initial_dir
+	velocity = speed[mode]
+	last_pad_collided = Node.new()

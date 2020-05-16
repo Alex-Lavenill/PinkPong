@@ -1,4 +1,0 @@
-[gd_scene format=2]
-
-[node name="Coll" type="CollisionPolygon2D"]
-polygon = PoolVector2Array( -12, -65, 10, -65, 11.8919, 2.16483, 10, 65, -12, 65, -11.952, 0 )

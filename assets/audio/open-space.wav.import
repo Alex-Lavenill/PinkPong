@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/open-space.wav-c64d9096b11e05ce42de1ca8e01c6fcc.sample"
+
+[deps]
+
+source_file="res://assets/audio/open-space.wav"
+dest_files=[ "res://.import/open-space.wav-c64d9096b11e05ce42de1ca8e01c6fcc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

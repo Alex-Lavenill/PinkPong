@@ -1,39 +1,35 @@
 extends KinematicBody2D
+# Classe abstrata Pad
+# Herdada por Player e Enemy
 
+# Configurações do Pad, exportadas para o editor
 export var color := Color.blueviolet
 export var size := Vector2(30, 140)
-export var speed := 500
+export var padSize := Vector2(12, 65)
 
-var offset := Vector2(-16, -70)
+# Carrega o collisionshape "PadColl"
+onready var preColl := preload("res://src/Pad/PadColl.tscn")
 
+var mode := 2
+var speed := [400.0, 600.0, 800.0]
+var acceleration := [.1 ,.2, .5]
+var max_velocity := [600.0, 800.0, 1000.0]
+var offset := Vector2(-padSize.x, -padSize.y)
+var velocity : float = speed[mode]
+var direction : Vector2
+
+# Adiciona o collisionshape
 func _ready() -> void:
-	pass
+	var Coll := preColl.instance()
+	add_child(Coll)
 
-# Desenha o pad na tela
+# Desenha o Pad na tela
 func _draw() -> void:
-	draw_rect(Rect2(offset, size), color)
+	draw_rect(Rect2(offset, padSize*2), color)
 
+# Calcula e trata a movimentação do Pad
 func _physics_process(delta: float) -> void:
-	movement(delta)
-
-# Captura os inputs e cuida da movimentação do pad
-func movement(delta : float) -> void:
-	if Input.is_action_pressed("ui_up") and (position.y + offset.y) > 0:
-		position.y -= speed * delta
-	if Input.is_action_pressed("ui_down") and (position.y - offset.y) < 600:
-		position.y += speed * delta
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	velocity = clamp(velocity, .1, max_velocity[mode])
+	var movement_ammount := direction * velocity * delta
+	move_and_collide(movement_ammount)
 

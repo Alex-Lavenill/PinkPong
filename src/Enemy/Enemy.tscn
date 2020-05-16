@@ -2,6 +2,8 @@
 
 [ext_resource path="res://src/Enemy/Enemy.gd" type="Script" id=1]
 
+
+
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 974, 300 )
 script = ExtResource( 1 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Ball/Ball.gd" type="Script" id=1]
+
+
+
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
+
+[node name="Ball" type="KinematicBody2D"]
+position = Vector2( 512, 300 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+color = Color( 0.894118, 0.956863, 0.341176, 1 )
+
+[node name="Coll" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
