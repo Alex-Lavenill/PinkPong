@@ -9,7 +9,6 @@ var elapsedtime = 0
 func _ready():
 	randomize()
 	curPos = offset
-	
 
 func _process(delta):
 	if isShake:

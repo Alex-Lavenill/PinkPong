@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ModeManager/ModeManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ZCOOLQing-32.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/audio/ending.wav" type="AudioStream" id=4]
-[ext_resource path="res://src/Settings/Settings.tscn" type="PackedScene" id=5]
 
 [sub_resource type="LargeTexture" id=1]
 
@@ -66,9 +65,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -16.5
+margin_top = -101.5
 margin_right = 20.0
-margin_bottom = 16.5
+margin_bottom = -68.5
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 2 )
@@ -151,9 +150,6 @@ __meta__ = {
 
 [node name="Ending" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-
-[node name="Settings" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="Setting" type="Button" parent="."]
 anchor_left = 0.5

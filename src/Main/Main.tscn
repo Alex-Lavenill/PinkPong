@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/AudioStream2D/aud_enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/Main/Main.gd" type="Script" id=2]
 [ext_resource path="res://src/Classes/Cam.gd" type="Script" id=3]
-[ext_resource path="res://src/TouchManager/TouchManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ModeManager/ModeManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/wall.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/AudioStream2D/aud_center.gd" type="Script" id=7]
@@ -25,6 +24,9 @@ extents = Vector2( 88, 300 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -57.0 ]
+}
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
@@ -112,9 +114,6 @@ script = ExtResource( 15 )
 stream = ExtResource( 6 )
 volume_db = -5.0
 script = ExtResource( 7 )
-
-[node name="TouchManager" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1, 3 )
 
 [node name="Ball" parent="." instance=ExtResource( 12 )]
 color = Color( 1, 0.352941, 0.376471, 1 )

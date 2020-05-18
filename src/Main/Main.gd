@@ -18,6 +18,9 @@ func _ready() -> void:
 	$Music.play()
 	original_color = $GUI/ColorRect.color
 	updateScoreBoard()
+	
+	if !$ModeManager.desktop:
+		add_child(preload("res://src/TouchManager/TouchManager.tscn").instance())
 
 func playerPoint() -> void:
 	$Ball.restart_ball(Vector2.LEFT)

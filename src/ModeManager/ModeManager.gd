@@ -1,10 +1,12 @@
 extends Control
 
+onready var pre_settings := preload("res://src/Settings/Settings.tscn")
+
 onready var lbl_start := $InitialMenu/start
 onready var btn_start := $InitialMenu/start/start
-onready var btn_settings := $Setting
 onready var btn_back := $Back
 onready var btn_restart := $restart
+onready var btn_settings := $Setting
 onready var lbl_winner := $winner
 onready var aud_ending := $Ending
 
@@ -21,9 +23,6 @@ func _ready() -> void:
 		desktop = true
 	if desktop:
 		btn_start.visible = false
-		get_parent().get_node("TouchManager").visible = false
-		get_parent().get_node("TouchManager/btn_down").disabled = true
-		get_parent().get_node("TouchManager/btn_up").disabled = true
 		lbl_start.text = "Press any key to Start"
 	else:
 		lbl_start.text = "Start"
@@ -52,23 +51,19 @@ func setMode(value: int) -> void:
 		btn_settings.visible = true
 		btn_restart.visible = true
 		btn_back.visible = false
-		$Settings.visible = false
 	if mode == 0:
 		lbl_start.visible = false
 		btn_restart.visible = true
-		$Settings.visible = false
 	if mode == 1:
 		btn_back.visible = true
 		btn_restart.visible = true
 		btn_settings.visible = true
-		$Settings.visible = false
 		pass
 	if mode == 2:
 		lbl_winner.visible = true
 		btn_restart.visible = true
 		btn_settings.visible = true
 		btn_back.visible = false
-		$Settings.visible = false
 		if last_mode < 3:
 			aud_ending.play()
 	if mode == 3:
@@ -78,7 +73,8 @@ func setMode(value: int) -> void:
 		btn_restart.visible = false
 		btn_start.visible = false
 		btn_settings.visible = false
-		$Settings.visible = true
+		var menu_settings = pre_settings.instance()
+		add_child(menu_settings)
 
 func _on_btn_restart_pressed() -> void:
 	pause()

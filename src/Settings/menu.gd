@@ -61,3 +61,4 @@ func Default_pressed() -> void:
 
 func Ok_pressed() -> void:
 	grandfather.setMode(grandfather.last_mode)
+	queue_free()
