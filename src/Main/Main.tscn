@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/AudioStream2D/aud_enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/Main/Main.gd" type="Script" id=2]
 [ext_resource path="res://src/Classes/Cam.gd" type="Script" id=3]
+[ext_resource path="res://src/TouchManager/TouchManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ModeManager/ModeManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/wall.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/AudioStream2D/aud_center.gd" type="Script" id=7]
@@ -50,12 +51,16 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -36.0
-margin_top = 17.0
+margin_top = 18.0
 margin_right = 36.0
-margin_bottom = 34.0
+margin_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 0.588235 )
 text = "[P] to Pause"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,6 +99,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TouchManager" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 7 )
+
+[node name="pause" type="Button" parent="."]
+margin_left = 465.0
+margin_top = 2.0
+margin_right = 559.0
+margin_bottom = 95.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Cam" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
 current = true
@@ -126,6 +144,8 @@ color = Color( 0.729412, 0.380392, 0.909804, 1 )
 color = Color( 1, 0.490196, 1, 1 )
 
 [node name="ModeManager" parent="." instance=ExtResource( 5 )]
+margin_left = -2.0
+margin_right = -2.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
@@ -174,3 +194,4 @@ __meta__ = {
 [node name="Right" type="CollisionShape2D" parent="RightLimit"]
 position = Vector2( 600, 0 )
 shape = SubResource( 2 )
+[connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]

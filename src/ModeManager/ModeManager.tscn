@@ -34,7 +34,6 @@ margin_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -80,10 +79,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -192.5
-margin_top = -39.0
-margin_right = 192.5
-margin_bottom = 39.0
+margin_left = -192.0
+margin_top = -55.5
+margin_right = 193.0
+margin_bottom = 66.5
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,8 +95,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -447.0
 margin_top = -235.0
-margin_right = -334.0
-margin_bottom = -196.0
+margin_right = -285.0
+margin_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 2 )
@@ -112,10 +111,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.5
-margin_top = 129.5
-margin_right = 46.5
-margin_bottom = 162.5
+margin_left = -59.0
+margin_top = 147.0
+margin_right = 67.0
+margin_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 105, 43 )
@@ -156,10 +155,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.5
-margin_top = 73.5
-margin_right = 56.5
-margin_bottom = 112.5
+margin_left = -60.0
+margin_top = 83.0
+margin_right = 69.0
+margin_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 2 )
@@ -169,7 +168,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="InitialMenu/start/start" to="." method="pause"]
-[connection signal="pressed" from="InitialMenu/start/start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="Back" to="." method="_Back_pressed"]
 [connection signal="pressed" from="restart" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="Setting" to="." method="_Settings_pressed"]

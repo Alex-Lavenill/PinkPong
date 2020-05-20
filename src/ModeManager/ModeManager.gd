@@ -21,11 +21,15 @@ func _ready() -> void:
 		desktop = false
 	else:
 		desktop = true
+	desktop = false
 	if desktop:
 		btn_start.visible = false
 		lbl_start.text = "Press any key to Start"
+		get_parent().get_node("TouchManager").queue_free()
 	else:
 		lbl_start.text = "Start"
+		get_parent().get_node("GUI/lbl_pause").text = "PAUSE"
+		get_parent().get_node("TouchManager").visible = false
 	setMode(-1)
 	pause()
 
@@ -42,6 +46,8 @@ func pause() -> void:
 	var new_pause_state := !get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
+	if !desktop:
+		get_parent().get_node("TouchManager").visible = !new_pause_state
 
 func setMode(value: int) -> void:
 	last_mode = mode
@@ -58,11 +64,12 @@ func setMode(value: int) -> void:
 		btn_back.visible = true
 		btn_restart.visible = true
 		btn_settings.visible = true
-		pass
+		lbl_start.visible = false
 	if mode == 2:
 		lbl_winner.visible = true
 		btn_restart.visible = true
 		btn_settings.visible = true
+		lbl_start.visible = false
 		btn_back.visible = false
 		if last_mode < 3:
 			aud_ending.play()
